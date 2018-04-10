@@ -1,3 +1,10 @@
+"设置字体
+set guifont=Fixedsys:h16
+"设置编码
+set encoding=utf-8
+set termencoding=utf-8
+set fileencodings=utf-8,gbk,latin1
+
 set mouse=a
 "跟随输入搜索时定位
 set incsearch
