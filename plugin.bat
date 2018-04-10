@@ -1,5 +1,5 @@
 @echo off
-set vimDir="%UserProfile%\test"
+set vimDir="%UserProfile%\vimfiles"
 if not exist %vimDir% mkdir %vimDir%
 if not exist "%vimDir%\autoload" mkdir "%vimDir%\autoload"
 if not exist "%vimDir%\autoload\pathogen.vim" (
