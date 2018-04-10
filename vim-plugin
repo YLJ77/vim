@@ -24,31 +24,12 @@ fi
 
 #添加插件
 cd $vimDir/bundle
-if [[ !(-e $vimDir/bundle/AutoComplPop) ]];then
-    git clone https://github.com/vim-scripts/AutoComplPop 
-fi
-
-
-if [[ !(-e $vimDir/bundle/emmet-vim) ]];then
-    git clone https://github.com/mattn/emmet-vim 
-fi
-
-if [[ !(-e $vimDir/bundle/vim-airline) ]];then
-    git clone https://github.com/bling/vim-airline 
-fi
-
-if [[ !(-e $vimDir/bundle/vim-blade) ]];then
-    git clone https://github.com/jwalton512/vim-blade 
-fi
-
-if [[ !(-e $vimDir/bundle/vim-commentary) ]];then
-    git clone https://github.com/tpope/vim-commentary 
-fi
-
-if [[ !(-e $vimDir/bundle/vim-vue) ]];then
-    git clone https://github.com/posva/vim-vue 
-fi
-
-if [[ !(-e $vimDir/bundle/nerdtree) ]];then
-    git clone https://github.com/scrooloose/nerdtree 
+pluginHub=./plugin-hub
+if [[ -r $pluginHub ]];then
+    for i in $(strings $pluginHub);do
+        IFS="|" read dir address <<< $i
+        if [[ !(-e "$vimDir/bundle/$dir") ]];then
+            git clone $address
+        fi
+    done;
 fi
