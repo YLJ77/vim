@@ -5,13 +5,15 @@ fi
 if [ $(dpkg-query -W -f='${Status}' vim-gtk 2>/dev/null | grep -c "ok installed")  -eq 0 ];then
     sudo apt-get install vim-gtk -y
 fi
-vimDir=./test
+
+vimDir="$(pwd)/test"
+
 if [[ !(-e $vimDir) ]]; then
-    mkdir $vimDir
+    mkdir -v $vimDir
 fi
 
 if [[ !(-e $vimDir/autoload) ]];then
-    mkdir $vimDir/autoload
+    mkdir -v $vimDir/autoload
 fi
 
 if [[ !(-e $vimDir/autoload/pathogen.vim) ]];then
@@ -19,12 +21,13 @@ if [[ !(-e $vimDir/autoload/pathogen.vim) ]];then
 fi
 
 if [[ !(-e $vimDir/bundle) ]];then
-    mkdir $vimDir/bundle
+    mkdir -v $vimDir/bundle
 fi
 
 #添加插件
-cd $vimDir/bundle
-pluginHub=./plugin-hub
+pluginHub="$(pwd)/plugin-hub"
+currentPath=$(pwd)
+cd "$vimDir/bundle"
 if [[ -r $pluginHub ]];then
     for i in $(strings $pluginHub);do
         IFS="|" read dir address <<< $i
@@ -33,3 +36,4 @@ if [[ -r $pluginHub ]];then
         fi
     done;
 fi
+cd $currentPath
