@@ -1,11 +1,11 @@
 #!/bin/bash
-if [[ -n $(dpkg -l | grep 'curl') ]];then
+if [ $(dpkg-query -W -f='${Status}' curl 2>/dev/null | grep -c "ok installed") -eq 0 ];then
     sudo apt install curl -y
 fi
-if [[ -n $(dpkg -l | grep 'vim-gtk') ]];then
+if [ $(dpkg-query -W -f='${Status}' vim-gtk 2>/dev/null | grep -c "ok installed")  -eq 0 ];then
     sudo apt-get install vim-gtk -y
 fi
-vimDir=./vim
+vimDir=./test
 if [[ !(-e $vimDir) ]]; then
     mkdir $vimDir
 fi
