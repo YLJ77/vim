@@ -1,4 +1,5 @@
 @echo off
+type .vimrc > "%UserProfile%\.vimrc
 set vimDir="%UserProfile%\vimfiles"
 if not exist %vimDir% mkdir %vimDir%
 if not exist "%vimDir%\autoload" mkdir "%vimDir%\autoload"
