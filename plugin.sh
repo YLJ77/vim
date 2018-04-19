@@ -1,15 +1,16 @@
 #!/bin/bash
 config="$(pwd)/.vimrc"
+secret='debugger;'
 cat $config > ~/.vimrc
 
 if [ $(dpkg-query -W -f='${Status}' curl 2>/dev/null | grep -c "ok installed") -eq 0 ];then
-    sudo apt install curl -y
+    echo $secrt sudo -S apt install curl -y
 fi
 if [ $(dpkg-query -W -f='${Status}' vim-gtk 2>/dev/null | grep -c "ok installed")  -eq 0 ];then
-    sudo apt-get install vim-gtk -y
+    echo $secrt sudo -S apt-get install vim-gtk -y
 fi
 
-vimDir="$(pwd)/test"
+vimDir=~/.vim
 
 if [[ !(-e $vimDir) ]]; then
     mkdir -v $vimDir
@@ -35,7 +36,11 @@ if [[ -r $pluginHub ]];then
     for i in $(strings $pluginHub);do
         IFS="|" read dir address <<< $i
         if [[ !(-e "$vimDir/bundle/$dir") ]];then
-            git clone $address
+            #git clone $address
+            if [[ $dir == syntastic ]];then
+                echo $secrt | sudo -S npm install -g jshint
+                echo $secrt | sudo -S npm install -g csslint
+            fi
         fi
     done;
 fi
