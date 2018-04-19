@@ -68,3 +68,17 @@ let g:acp_behavior = {
   \     },
   \   ],
   \ }
+
+"vim-emmet添加php文件支持
+let g:user_emmet_settings = {
+  \  'php' : {
+  \    'extends' : 'html',
+  \    'filters' : 'c',
+  \  },
+  \  'xml' : {
+  \    'extends' : 'html',
+  \  },
+  \  'haml' : {
+  \    'extends' : 'html',
+  \  },
+  \}
