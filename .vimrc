@@ -40,3 +40,31 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css,vue,less EmmetInstall
 
 set wildmode=longest,list
+
+"AutoComplPop插件添加scss、less文件css自动完成
+let g:acp_behavior = {
+  \   'scss': [
+  \     {
+  \       'command' : "\<c-x>\<c-f>",
+  \       'meets'   : 'acp#meetsforfile',
+  \       'repeat'  : 1,
+  \     },
+  \     {
+  \       'command' : "\<c-x>\<c-o>",
+  \       'meets'   : 'acp#meetsforcssomni',
+  \       'repeat'  : 0,
+  \     },
+  \   ],
+  \   'less': [
+  \     {
+  \       'command' : "\<c-x>\<c-f>",
+  \       'meets'   : 'acp#meetsforfile',
+  \       'repeat'  : 1,
+  \     },
+  \     {
+  \       'command' : "\<c-x>\<c-o>",
+  \       'meets'   : 'acp#meetsforcssomni',
+  \       'repeat'  : 0,
+  \     },
+  \   ],
+  \ }
