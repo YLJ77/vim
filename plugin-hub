@@ -5,3 +5,4 @@ vim-commentary|https://github.com/tpope/vim-commentary
 vim-vue|https://github.com/posva/vim-vue 
 nerdtree|https://github.com/scrooloose/nerdtree 
 vim-css-color|https://github.com/ap/vim-css-color
+syntastic|https://github.com/scrooloose/syntastic
