@@ -3,29 +3,25 @@ config="$(pwd)/.vimrc"
 secret='debugger;'
 cat $config > ~/.vimrc
 
-if [ $(dpkg-query -W -f='${Status}' curl 2>/dev/null | grep -c "ok installed") -eq 0 ];then
-    echo $secret | sudo -S apt install curl -y
-fi
-if [ $(dpkg-query -W -f='${Status}' vim-gtk 2>/dev/null | grep -c "ok installed")  -eq 0 ];then
-    echo $secret | sudo -S apt-get install vim-gtk -y
-fi
+package=(curl vim-gtk)
+for k in ${package[@]};do
+    if [ $(dpkg-query -W -f='${Status}' $k 2>/dev/null | grep -c "ok installed") -eq 0 ];then
+        echo $secret | sudo -S apt install $k -y
+    fi
+done;
 
 vimDir=~/.vim
 
-if [[ !(-e $vimDir) ]]; then
-    mkdir -v $vimDir
-fi
-
-if [[ !(-e $vimDir/autoload) ]];then
-    mkdir -v $vimDir/autoload
-fi
+#添加文件夹依赖
+dir=($vimDir "$vimDir/autoload" "$vimDir/bundle")
+for j in ${dir[@]};do
+    if [[ !(-e $j) ]]; then
+        mkdir -v $j
+    fi
+done;
 
 if [[ !(-e $vimDir/autoload/pathogen.vim) ]];then
     curl -LSso  $vimDir/autoload/pathogen.vim https://tpo.pe/pathogen.vim 
-fi
-
-if [[ !(-e $vimDir/bundle) ]];then
-    mkdir -v $vimDir/bundle
 fi
 
 #添加插件
