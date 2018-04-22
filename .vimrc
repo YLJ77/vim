@@ -46,29 +46,28 @@ let g:acp_behavior = {
   \   'scss': [
   \     {
   \       'command' : "\<c-x>\<c-f>",
-  \       'meets'   : 'acp#meetsforfile',
+  \       'meets'   : 'acp#meetsForFile',
   \       'repeat'  : 1,
   \     },
   \     {
   \       'command' : "\<c-x>\<c-o>",
-  \       'meets'   : 'acp#meetsforcssomni',
+  \       'meets'   : 'acp#meetsForCssOmni',
   \       'repeat'  : 0,
   \     },
   \   ],
   \   'less': [
   \     {
   \       'command' : "\<c-x>\<c-f>",
-  \       'meets'   : 'acp#meetsforfile',
+  \       'meets'   : 'acp#meetsForFile',
   \       'repeat'  : 1,
   \     },
   \     {
   \       'command' : "\<c-x>\<c-o>",
-  \       'meets'   : 'acp#meetsforcssomni',
+  \       'meets'   : 'acp#meetsForCssOmni',
   \       'repeat'  : 0,
   \     },
   \   ],
   \ }
-
 "vim-emmet添加php文件支持
 let g:user_emmet_settings = {
   \  'php' : {
