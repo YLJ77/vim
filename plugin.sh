@@ -3,9 +3,13 @@ config="$(pwd)/.vimrc"
 secret='debugger;'
 cat $config > ~/.vimrc
 
-package=(curl vim-gtk)
+#安装包依赖
+package=(curl nodejs git vim-gtk)
 for k in ${package[@]};do
     if [ $(dpkg-query -W -f='${Status}' $k 2>/dev/null | grep -c "ok installed") -eq 0 ];then
+        if [[ $k==nodejs ]];then
+            curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+        fi
         echo $secret | sudo -S apt install $k -y
     fi
 done;
@@ -34,10 +38,12 @@ if [[ -r $pluginHub ]];then
         if [[ !(-e "$vimDir/bundle/$dir") ]];then
             git clone $address
             if [[ $dir == syntastic ]];then
-                echo $secret | sudo -S npm install -g jshint
-                echo $secret | sudo -S npm install -g csslint
+                echo $secret | sudo -S npm install csslint -g jshint
             fi
         fi
     done;
+else
+    echo "$pluginHub 没有读权限"
+    exit 1
 fi
 cd $currentPath
