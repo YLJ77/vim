@@ -40,3 +40,54 @@ let g:user_emmet_install_global = 0
 autocmd FileType html,css,vue,less EmmetInstall
 
 set wildmode=longest,list
+
+"AutoComplPop插件添加scss、less文件css自动完成
+let g:acp_behavior = {
+  \   'scss': [
+  \     {
+  \       'command' : "\<c-x>\<c-f>",
+  \       'meets'   : 'acp#meetsForFile',
+  \       'repeat'  : 1,
+  \     },
+  \     {
+  \       'command' : "\<c-x>\<c-o>",
+  \       'meets'   : 'acp#meetsForCssOmni',
+  \       'repeat'  : 0,
+  \     },
+  \   ],
+  \   'less': [
+  \     {
+  \       'command' : "\<c-x>\<c-f>",
+  \       'meets'   : 'acp#meetsForFile',
+  \       'repeat'  : 1,
+  \     },
+  \     {
+  \       'command' : "\<c-x>\<c-o>",
+  \       'meets'   : 'acp#meetsForCssOmni',
+  \       'repeat'  : 0,
+  \     },
+  \   ],
+  \ }
+"vim-emmet添加php文件支持
+let g:user_emmet_settings = {
+  \  'php' : {
+  \    'extends' : 'html',
+  \    'filters' : 'c',
+  \  },
+  \  'xml' : {
+  \    'extends' : 'html',
+  \  },
+  \  'haml' : {
+  \    'extends' : 'html',
+  \  },
+  \}
+
+"syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
