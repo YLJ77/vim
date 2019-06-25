@@ -4,7 +4,4 @@ vim-airline|https://github.com/bling/vim-airline
 vim-commentary|https://github.com/tpope/vim-commentary 
 vim-vue|https://github.com/posva/vim-vue 
 nerdtree|https://github.com/scrooloose/nerdtree 
-vim-blade|https://github.com/jwalton512/vim-blade 
-prettier|https://github.com/prettier/prettier
 vim-css-color|https://github.com/ap/vim-css-color
-syntastic|https://github.com/scrooloose/syntastic
