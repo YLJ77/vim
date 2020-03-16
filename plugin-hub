@@ -1,7 +1,8 @@
-AutoComplPop|https://github.com/vim-scripts/AutoComplPop 
-emmet-vim|https://github.com/mattn/emmet-vim 
+AutoComplPop|https://github.com/vim-scripts/AutoComplPop
+emmet-vim|https://github.com/mattn/emmet-vim
 vim-airline|https://github.com/bling/vim-airline 
 vim-commentary|https://github.com/tpope/vim-commentary 
 vim-vue|https://github.com/posva/vim-vue 
 nerdtree|https://github.com/scrooloose/nerdtree 
 vim-css-color|https://github.com/ap/vim-css-color
+vim-multiple-cursors|https://github.com/terryma/vim-multiple-cursors
