@@ -28,7 +28,6 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'sirver/ultisnips'
 Plug 'junegunn/gv.vim'
-Plug 'thaerkh/vim-workspace'
 Plug 'mileszs/ack.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'itchyny/lightline.vim'
@@ -50,9 +49,31 @@ Plug 'shougo/deol.nvim'
 Plug 'valloric/matchtagalways'
 Plug 'dyng/ctrlsf.vim'
 Plug 'majutsushi/tagbar'
-Plug 'ternjs/tern_for_vim'
+Plug 'kamykn/spelunker.vim'
+Plug 'machakann/vim-highlightedyank'
+Plug 'pseewald/vim-anyfold'
+Plug 'kien/tabman.vim'
+Plug 'gcmt/taboo.vim' "Taboo aims to ease the way you set the vim tabline. In addition, Taboo provides fews useful utilities for renaming tabs.
+"Plug 'bling/vim-bufferline'
+Plug 'xolox/vim-session'
+Plug 'xolox/vim-misc' "session plugin needed
+Plug 'danro/rename.vim'
+Plug 'osyo-manga/vim-over'
+Plug 'vim-scripts/ZoomWin'
 " Initialize plugin sytem
 call plug#end()
+
+"taboo plugin: remember tab names when you save the current session
+set sessionoptions+=tabpages,globals
+
+"fanyfold plugin
+filetype plugin indent on " required
+syntax on                 " required
+autocmd Filetype * AnyFoldActivate " activate for all filetypes
+set foldlevel=0  " close all folds
+
+"spelunker plugin: add words to your user specific allowlist
+let g:spelunker_white_list_for_user = ['mongodb', 'cond']
 
 "ctrlsf plugin:
 "rainbow plugin:
@@ -84,11 +105,6 @@ endif
 "don't want to jump to the first result automatically
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
-
-"vim-workspace plugin: Autosave
-let g:workspace_autosave_always = 1
-"save all your session files in a single directory outside of your workspace
-"let g:workspace_session_directory = $HOME . '\.vim\sessions\'
 
 "easymotion plugin: Integration with incsearch.vim
 "haya14busa/incsearch.vim
@@ -253,7 +269,7 @@ let g:acp_behavior = {
   \   ],
   \ }
 
-" vim-multiple-cursors
+"vim-multiple-cursors plugin:
 let g:multi_cursor_use_default_mapping=0
 " Default mapping
 let g:multi_cursor_start_word_key      = '<C-n>'
