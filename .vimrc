@@ -1,3 +1,6 @@
+"set default shell for vim
+"set shell=$ProgramW6432/Git/bin/bash
+let mapleader=","
 " Specify a directory for plugins " - For Neovim: stdpath('data') . '/plugged'
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
@@ -9,6 +12,7 @@ Plug 'ap/vim-css-color'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'posva/vim-vue'
 Plug 'valloric/youcompleteme'
+"Plug 'zxqfl/tabnine-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'preservim/nerdtree' |
@@ -21,7 +25,6 @@ Plug 'scrooloose/syntastic'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'honza/vim-snippets'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
@@ -60,8 +63,19 @@ Plug 'xolox/vim-misc' "session plugin needed
 Plug 'danro/rename.vim'
 Plug 'osyo-manga/vim-over'
 Plug 'vim-scripts/ZoomWin'
+Plug 'elzr/vim-json'
 " Initialize plugin sytem
 call plug#end()
+
+"ctrlp plugin:
+let g:ctrlp_custom_ignore = '\v[\/]\.?(git|hg|svn|node_modules)$'
+let g:ctrlp_map = '<c-p> <c-d>'
+
+"session plugin:
+nnoremap <leader>os :OpenSession<CR>
+
+"youcompleteme plugin:
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
 
 "taboo plugin: remember tab names when you save the current session
 set sessionoptions+=tabpages,globals
@@ -70,7 +84,8 @@ set sessionoptions+=tabpages,globals
 filetype plugin indent on " required
 syntax on                 " required
 autocmd Filetype * AnyFoldActivate " activate for all filetypes
-set foldlevel=0  " close all folds
+"set foldlevel=0  " close all folds
+set foldlevel=99 " Open all folds
 
 "spelunker plugin: add words to your user specific allowlist
 let g:spelunker_white_list_for_user = ['mongodb', 'cond']
@@ -220,7 +235,6 @@ set autowrite
 set nocompatible
 "runtime macros/matchit.vim
 
-let mapleader=","
 map <leader>c :NERDTreeToggle<CR>
 map <leader>l :NERDTreeFind<CR>
 
@@ -281,5 +295,3 @@ let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
-"set default shell for vim
-set shell=$ProgramW6432/Git/bin/bash
